@@ -4,9 +4,9 @@ export default defineConfig ({
   entities: ['dist/**/*.entity{.js}'],
   entitiesTs: ['src/**/*.entity{.ts}'],
   dbName: 'virtualstore',
-  host: 'triton.inversioneslacentral.com',
-  port: 3307,
+  host: 'localhost',
+  port: 3308,
   user: 'root',
-  password: 'S4nt4Luc14*./',
+  password: '123456',
   debug: true,
 })

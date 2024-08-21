@@ -28,25 +28,4 @@ export class ProductofinalService {
       },
     });
   }
-
-  async findAllCategories() {
-    const categories = await this.repository.findAll({
-      where: {
-        estado: 'true',
-        nuevo: { $gt: 0 },
-      },
-      fields: ['categoria', 'prefijo', 'codigo'],
-      orderBy: { codigo: 'ASC' },
-      groupBy: ['categoria', 'prefijo', 'codigo'],
-    });
-
-    return categories.reduce((unique, item) => {
-      const existingItem = unique.find((i) => i.categoria === item.categoria);
-      if (!existingItem) {
-        unique.push(item);
-      }
-
-      return unique;
-    }, []);
-  }
 }

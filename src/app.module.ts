@@ -5,6 +5,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 
 import { ProductofinalModule } from './productofinal/productofinal.module';
 import { SedeModule } from './sede/sede.module';
+import { CategoriaModule } from './categoria/categoria.module';
 import config from '../mikro-orm.config';
 
 @Module({
@@ -15,6 +16,7 @@ import config from '../mikro-orm.config';
     }),
     ProductofinalModule,
     SedeModule,
+    CategoriaModule,
   ],
 })
 export class AppModule {}

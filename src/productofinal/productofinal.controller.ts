@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { ProductofinalService } from './productofinal.service';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -7,17 +7,12 @@ import { ApiTags } from '@nestjs/swagger';
 export class ProductofinalController {
   constructor(private readonly productofinalService: ProductofinalService) {}
 
-  @Get('/category')
-  findAllCategories() {
-    return this.productofinalService.findAllCategories();
-  }
-
-  @Get(':page/:limit/:sede/:categoria')
+  @Get()
   findAll(
-    @Param('page') page: number,
-    @Param('limit') limit: number,
-    @Param('sede') sede: string,
-    @Param('categoria') categoria: string,
+    @Query('page') page: number,
+    @Query('limit') limit: number,
+    @Query('sede') sede: string,
+    @Query('categoria') categoria: string,
   ) {
     return this.productofinalService.getAll(page, limit, sede, categoria);
   }
