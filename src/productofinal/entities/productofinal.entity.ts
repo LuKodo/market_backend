@@ -1,112 +1,112 @@
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Column, Model, Table } from 'sequelize-typescript';
 
-@Entity({ tableName: 'productofinal' })
-export class Productofinal {
-  @PrimaryKey()
+@Table({ tableName: 'productofinal', timestamps: false })
+export class Productofinal extends Model {
+  @Column({ primaryKey: true })
   codigo: string;
 
-  @PrimaryKey()
+  @Column({ primaryKey: true })
   prefijo: string;
 
-  @Property({ type: 'date' })
+  @Column({ type: 'date' })
   fecharegistro: Date;
 
-  @Property()
+  @Column
   nombre: string;
 
-  @Property()
+  @Column
   marca: string;
 
-  @Property()
+  @Column
   presentacion: string;
 
-  @Property()
+  @Column
   preciocomprasiniva: number;
 
-  @Property()
+  @Column
   preciocompraconiva: number;
 
-  @Property()
+  @Column
   precioventageneral: number;
 
-  @Property()
+  @Column
   precioventapormayor: number;
 
-  @Property()
+  @Column
   precioventacredito: number;
 
-  @Property()
+  @Column
   nuevo: number;
 
-  @Property()
+  @Column
   usado: number;
 
-  @Property()
+  @Column
   alertamin: number;
 
-  @Property()
+  @Column
   alertamax: number;
 
-  @Property()
+  @Column
   tarifaimpuestocompra: string;
 
-  @Property()
+  @Column
   tarifaimpuestoventa: string;
 
-  @Property()
+  @Column
   categoria: string;
 
-  @Property()
+  @Column
   porcentajeutilidadgeneral: number;
 
-  @Property()
+  @Column
   porcentajeutilidadmayor: number;
 
-  @Property()
+  @Column
   porcentajeutilidadcredito: number;
 
-  @Property({ type: 'date' })
+  @Column({ type: 'date' })
   fechaultimacompra: Date;
 
-  @Property({ type: 'date' })
+  @Column({ type: 'date' })
   fechaultimaventa: Date;
 
-  @Property()
+  @Column
   estadoprogramaciondesc: string;
 
-  @Property()
+  @Column
   programaciondescinicio: Date;
 
-  @Property()
+  @Column
   programaciondescfin: Date;
 
-  @Property()
+  @Column
   porcentajedesc: number;
 
-  @Property()
+  @Column
   estado: string;
 
-  @Property()
+  @Column
   ruta: string;
 
-  @Property()
+  @Column
   reciboentrega: string;
 
-  @Property()
+  @Column
   entregabodega: string;
 
-  @Property()
+  @Column
   proveedor1: string;
 
-  @Property()
+  @Column
   proveedor2: string;
 
-  @Property()
+  @Column
   proveedor3: string;
 
-  @Property({ type: 'date' })
+  @Column({ type: 'date' })
   fechaactualizado: Date;
 
-  @Property({ type: 'time' })
+  @Column({ type: 'time' })
   horaactualizado: Date;
 }

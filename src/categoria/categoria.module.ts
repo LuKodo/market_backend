@@ -2,12 +2,10 @@ import { Module } from '@nestjs/common';
 import { CategoriaService } from './categoria.service';
 import { CategoriaController } from './categoria.controller';
 import { Categoria } from './entities/categoria.entity';
-import { MikroOrmModule } from '@mikro-orm/nestjs';
+import { SequelizeModule } from '@nestjs/sequelize';
 
 @Module({
-  imports: [
-    MikroOrmModule.forFeature({ entities: [Categoria] }),
-  ],
+  imports: [SequelizeModule.forFeature([Categoria])],
   controllers: [CategoriaController],
   providers: [CategoriaService],
 })

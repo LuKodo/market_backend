@@ -1,13 +1,13 @@
-import { EntityRepository } from '@mikro-orm/core';
-import { InjectRepository } from '@mikro-orm/nestjs';
 import { Injectable } from '@nestjs/common';
 import { Productofinal } from './entities/productofinal.entity';
+import { Op } from 'sequelize';
+import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
 export class ProductofinalService {
   constructor(
-    @InjectRepository(Productofinal)
-    private readonly repository: EntityRepository<Productofinal>,
+    @InjectModel(Productofinal)
+    private readonly repository: typeof Productofinal,
   ) {}
 
   async getAll(
@@ -18,14 +18,15 @@ export class ProductofinalService {
   ): Promise<Productofinal[]> {
     const offset = (page - 1) * limit;
     return this.repository.findAll({
-      limit,
+      limit: Number(limit),
       offset,
       where: {
         prefijo: sede,
-        nuevo: { $gt: 0 },
+        nuevo: { [Op.gt]: 0 },
         estado: 'true',
         ...(categoria !== 'all' && { categoria }),
       },
+      attributes: ['codigo', 'nombre', 'marca', 'nuevo', 'usado', 'prefijo'],
     });
   }
 }

@@ -2,7 +2,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { SedeService } from './sede.service';
 import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('SEDES')
+@ApiTags('Sedes')
 @Controller('sede')
 export class SedeController {
   constructor(private readonly sedeService: SedeService) {}
