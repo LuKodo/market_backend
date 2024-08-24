@@ -2,7 +2,7 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { ProductofinalService } from './productofinal.service';
 import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('PRODUCTO FINAL')
+@ApiTags('Productos')
 @Controller('productofinal')
 export class ProductofinalController {
   constructor(private readonly productofinalService: ProductofinalService) {}

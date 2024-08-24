@@ -1,22 +1,26 @@
-import { EntityRepository } from '@mikro-orm/core';
-import { InjectRepository } from '@mikro-orm/nestjs';
 import { Injectable } from '@nestjs/common';
 import { Sede } from './entities/sede.entity';
+import { InjectModel } from '@nestjs/sequelize';
+import { Op } from 'sequelize';
 
 @Injectable()
 export class SedeService {
   constructor(
-    @InjectRepository(Sede)
-    private repository: EntityRepository<Sede>,
+    @InjectModel(Sede)
+    private repository: typeof Sede,
   ) {}
 
   async findAll(): Promise<Sede[]> {
     return this.repository.findAll({
-      where: { prefijo: { $in: ['LA', 'SB', 'SBE', 'SSC', 'SURT'] } },
+      where: { prefijo: { [Op.in]: ['LA', 'SB', 'SBE', 'SSC', 'SURT'] } },
+      attributes: ['prefijo', 'nombre', 'ip', 'bodega'],
     });
   }
 
   async findOne(prefijo: string) {
-    return this.repository.findOne({ prefijo });
+    return this.repository.findOne({
+      where: { prefijo },
+      attributes: ['prefijo', 'nombre', 'ip', 'bodega'],
+    });
   }
 }

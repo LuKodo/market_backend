@@ -1,16 +1,16 @@
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import { Column, Model, Table } from 'sequelize-typescript';
 
-@Entity({ tableName: 'sede' })
-export class Sede {
-    @PrimaryKey()
-    prefijo: String;
+@Table({ tableName: 'sede', timestamps: false })
+export class Sede extends Model {
+  @Column({ primaryKey: true })
+  prefijo: String;
 
-    @Property()
-    nombre: String;
+  @Column
+  nombre: String;
 
-    @Property()
-    ip: String;
+  @Column
+  ip: String;
 
-    @Property()
-    bodega: String;
+  @Column
+  bodega: String;
 }
